@@ -1,3 +1,76 @@
+*{
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'sawerregular';
+  src: url('../fonts/sawer-webfont.woff2') format('woff2'),
+    url('../fonts/sawer-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 body{
-  padding: 50px;
-} 
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h1,h2,h3{
+  font-family: "sawerregular";
+}
+
+p{
+  font-family: "Roboto", serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+header{
+  background-color: aliceblue;
+  padding: 30px;
+  text-align: center;
+}
+
+nav{
+  float: left;
+  background-color: azure;
+  width: 30%;
+  height: 300px;
+  padding: 20px;
+}
+
+aside{
+  float: left;
+  background-color: blueviolet;
+  width: 70%;
+  height: 300px;
+  padding: 30px;
+}
+section{
+  width: 100%;
+  height: 300px;
+}
+section::after{
+  clear: both;
+  display: table;
+}
+
+footer{
+  background-color: bisque;
+  padding: 10px;
+  text-align: center;
+  height: 300px;
+  width: 100%;
+}
+
+footer > p{
+  margin-top: 10px;
+}
+
+@media (max-width:600px) {
+  menu{
+    display: none;
+  }
+  nav, aside{
+    width: 100%;
+  }
+}
