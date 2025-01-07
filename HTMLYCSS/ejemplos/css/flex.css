@@ -1,0 +1,22 @@
+body{
+  background-color: antiquewhite;
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  background-color: aqua;
+  border: 1px solid;
+  padding: 2px;
+}
+
+.item{
+  background-color: aliceblue;
+  width: 200px;
+  height: 200px;
+  border: 1px #000;
+  text-align: center;
+}
