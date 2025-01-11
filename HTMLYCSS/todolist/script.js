@@ -151,3 +151,5 @@ tareas_app.map((tarea) => {
   }
   //console.log(`${tarea.completada == true ? "✅" : "❌"} ${tarea.nombre} x`);
 });
+
+//DOM
