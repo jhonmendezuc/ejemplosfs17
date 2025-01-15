@@ -153,3 +153,55 @@ tareas_app.map((tarea) => {
 });
 
 //DOM
+
+let tituloId = document.getElementById("titulo-id");
+let tituloTag = document.getElementsByTagName("h5");
+let parrafoClase = document.getElementsByClassName("parrafo-clase");
+console.log(tituloId.tagName);
+console.log(tituloTag);
+console.log(parrafoClase[0]);
+
+//query selector
+let tituloId2 = document.querySelector("#titulo-id-2");
+console.log(tituloId2);
+let parrafoClase2 = document.querySelectorAll(".parrafo-clase");
+console.log(parrafoClase2);
+
+let tareas_array = [
+  {
+    id: 1,
+    nombre: "tarea1",
+    completada: true,
+  },
+  {
+    id: 2,
+    nombre: "tarea2",
+    completada: false,
+  },
+  {
+    id: 3,
+    nombre: "tarea3",
+    completada: true,
+  },
+];
+
+let listaTareas = document.querySelector("#tareas");
+let agregarTareaBtn = document.querySelector("#agregar-tarea");
+
+agregarTareaBtn.addEventListener("click", () => {
+  listaTareas.innerHTML = "<li> tarea 1 </li>";
+});
+
+tareas_array.forEach((tarea) => {
+  listaTareas.innerHTML += `<li> ${tarea.nombre} </li>`;
+});
+
+let consultaTitulo = document.querySelector("#titulo-id");
+consultaTitulo.style.color = "red";
+
+let consultaTitulo2 = document.querySelector("#titulo-id-2");
+consultaTitulo2.style.display = "none";
+
+let pagina = "<h1>contenido pagina antigua</h1>";
+//ejemplo de api localstorage
+localStorage.setItem("pagina", pagina);

@@ -4,35 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo - list</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
         
   </head>
   <body>
     <div class="container">
       <h1>T O D O</h1>
-      <div class="input-section">
-        <input type="text" placeholder="escriba su tarea..." />
-        <button>+</button>
+      <div  class="input-section">
+        <input id="todo-input" type="text" value="" placeholder="escriba su tarea..." />
+        <button id="add-btn">+</button>
       </div>
-      <ul id="todo-list">
-        <li>
-          <div class="todo-item">
-            <input type="checkbox" />
-            <span>item 1</span>
-          </div>
-          <button><i class="bi bi-bookmark-x-fill"></i></button>
-        </li>
-        <li>
-          <div class="todo-item">
-            <input type="checkbox" />
-            <span>item 2</span>
-          </div>
-          <button><i class="bi bi-bookmark-x-fill"></i>
-</button>
-        </li>
+      <ul id="todo-list">         
       </ul>
       <div class="footer">
         <span>0 items</span>
@@ -45,6 +32,6 @@
       </div>
     </div>
     </div>
-    <script src="./script.js"></script>
+    <script src="./js/todo.js"></script>
   </body>
 </html>
