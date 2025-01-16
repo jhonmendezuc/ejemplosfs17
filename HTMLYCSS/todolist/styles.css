@@ -112,3 +112,8 @@ h1{
  #clear-completed {
    color: #d9534f;
  }
+
+ .task-completed{
+  color: red;
+  text-decoration: line-through;
+ }
