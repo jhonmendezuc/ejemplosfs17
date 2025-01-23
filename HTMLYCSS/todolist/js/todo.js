@@ -20,6 +20,7 @@ let currentTaskFilter = "all";
 
 function showTask() {
   todoList.innerHTML = "";
+  debugger;
   let TaskFilter = taskArray.filter((task) => {
     if (currentTaskFilter === "active") return !task.completed;
     if (currentTaskFilter === "completed") return task.completed;
