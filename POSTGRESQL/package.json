@@ -1,0 +1,16 @@
+{
+  "name": "postgresql",
+  "version": "1.0.0",
+  "main": "db.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "pg": "^8.13.1"
+  }
+}
