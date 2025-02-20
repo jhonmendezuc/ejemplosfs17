@@ -1,0 +1,26 @@
+{
+  "name": "ejemplosnode",
+  "version": "1.0.0",
+  "description": "ejmplos de nodejs",
+  "main": "2.os.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node 2.os.mjs",
+    "test": "node 0.index.js",
+    "dev": "nodemon 0.index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": " https://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@github.com/jhonmendezuc/ejemplosfs17.git"
+  },
+  "keywords": [
+    "js",
+    "node"
+  ],
+  "author": "jhon mendez",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
