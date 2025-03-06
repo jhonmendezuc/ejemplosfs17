@@ -1,26 +1,26 @@
 import userService from "../services/userService.js";
 
-const getUser = (req, res) => {
-  const data = userService.getUser();
+const getUser = async (req, res) => {
+  const data = await userService.getUser();
   res.send(data);
 };
 
-const createUser = (req, res) => {
+const createUser = async (req, res) => {
   const body = req.body;
-  const data = userService.createUser(body);
+  const data = await userService.createUser(body);
   res.send(data);
 };
 
-const updateUser = (req, res) => {
+const updateUser = async (req, res) => {
   const body = req.body;
   const _id = req.params.id;
-  const data = userService.updateUser(_id, body);
+  const data = await userService.updateUser(_id, body);
   res.send(data);
 };
 
-const deleteUser = (req, res) => {
+const deleteUser = async (req, res) => {
   const _id = req.params.id;
-  const data = userService.deleteUser(_id);
+  const data = await userService.deleteUser(_id);
   res.send(data);
 };
 

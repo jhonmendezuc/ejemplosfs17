@@ -1,3 +1,4 @@
+/*
 const users = [
   {
     id: 1,
@@ -12,13 +13,22 @@ const users = [
     password: "123",
   },
 ];
+*/
+import DataAccess from "../db.js";
 
-const getUser = () => {
-  return users;
+const dataAccess = new DataAccess();
+const collectionName = "user";
+(async () => {
+  await dataAccess.connect();
+})();
+const getUser = async () => {
+  const data = await dataAccess.findAll(collectionName, {});
+  return data;
 };
-const createUser = (body) => {
-  users.push(body);
-  return { resultado: "usuario agregado" };
+const createUser = async (body) => {
+  //users.push(body);
+  const data = await dataAccess.insertOne(collectionName, body);
+  return data;
 };
 const updateUser = (_id, body) => {
   const index = users.findIndex((user) => user.id == _id);

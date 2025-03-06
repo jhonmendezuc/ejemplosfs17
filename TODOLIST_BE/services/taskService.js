@@ -1,3 +1,4 @@
+/*
 const tasks = [
   {
     id: 1,
@@ -17,14 +18,22 @@ const tasks = [
     description: "realiar el curso de programacion",
     status: false,
   },
-];
+]; */
+import DataAccess from "../db.js";
+const dataAccess = new DataAccess();
+const collectionName = "task";
+(async () => {
+  await dataAccess.connect();
+})();
 
-const getTask = () => {
-  return tasks;
+const getTask = async () => {
+  const data = await dataAccess.findAll(collectionName);
+  return data;
 };
-const createTask = (body) => {
-  tasks.push(body);
-  return { resultado: "tarea agregado" };
+const createTask = async (body) => {
+  //tasks.push(body);
+  const data = await dataAccess.insertOne(collectionName, body);
+  return data;
 };
 const updateTask = (_id, body) => {
   const index = tasks.findIndex((user) => user.id == _id);

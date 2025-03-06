@@ -1,13 +1,13 @@
 import taskService from "../services/taskService.js";
 
-const getTask = (req, res) => {
-  const data = taskService.getTask();
+const getTask = async (req, res) => {
+  const data = await taskService.getTask();
   res.send(data);
 };
 
-const createTask = (req, res) => {
+const createTask = async (req, res) => {
   const body = req.body;
-  const data = taskService.createTask(body);
+  const data = await taskService.createTask(body);
   res.send(data);
 };
 
