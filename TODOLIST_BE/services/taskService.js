@@ -1,44 +1,49 @@
-const tasks = [
-  {
-    id: 1,
-    title: "programar",
-    description: "realiar el curso de programacion",
-    status: true,
-  },
-  {
-    id: 2,
-    title: "cocinar",
-    description: "realiar el curso de programacion",
-    status: false,
-  },
-  {
-    id: 3,
-    title: "limpiar",
-    description: "realiar el curso de programacion",
-    status: false,
-  },
-];
+import { PrismaClient } from "@prisma/client";
 
-const getTask = () => {
-  return tasks;
+const prisma = new PrismaClient();
+
+const getTask = async () => {
+  const data = await prisma.task.findMany();
+  return data;
 };
-const createTask = (body) => {
-  tasks.push(body);
-  return { resultado: "tarea agregado" };
+
+const createTask = async (body) => {
+  const data = await prisma.task.create({
+    data: {
+      title: body.title,
+      description: body.description,
+      status: body.status,
+      user: {
+        connect: {
+          id: body.userId,
+        },
+      },
+    },
+  });
+  return data;
 };
-const updateTask = (_id, body) => {
-  const index = tasks.findIndex((user) => user.id == _id);
-  console.log(index);
-  tasks[index] = body;
-  return { resultado: "tarea actualizado" };
+const updateTask = async (_id, body) => {
+  return await prisma.task.update({
+    where: {
+      id: _id,
+    },
+    data: {
+      title: body.title,
+      description: body.description,
+      status: body.status,
+    },
+  });
 };
-const deleteTask = (_id) => {
-  const index = tasks.findIndex((user) => user.id == _id);
-  tasks.splice(index, 1);
-  return { resultado: "tarea eliminado" };
+const deleteTask = async (_id) => {
+  const data = await prisma.task.delete({
+    where: {
+      id: _id,
+    },
+  });
+  return data;
 };
-const login = (body) => {
-  const user = tasks.find(
+const login = async (body) => {
+  const user = await tasks.find(
     (user) => user.email === body.email && user.password === body.password
   );
 };

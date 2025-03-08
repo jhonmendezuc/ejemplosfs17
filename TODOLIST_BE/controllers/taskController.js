@@ -1,26 +1,26 @@
 import taskService from "../services/taskService.js";
 
-const getTask = (req, res) => {
-  const data = taskService.getTask();
+const getTask = async (req, res) => {
+  const data = await taskService.getTask();
   res.send(data);
 };
 
-const createTask = (req, res) => {
+const createTask = async (req, res) => {
   const body = req.body;
-  const data = taskService.createTask(body);
+  const data = await taskService.createTask(body);
   res.send(data);
 };
 
-const updateTask = (req, res) => {
+const updateTask = async (req, res) => {
   const body = req.body;
   const _id = req.params.id;
-  const data = taskService.updateTask(_id, body);
+  const data = await taskService.updateTask(_id, body);
   res.send(data);
 };
 
-const deleteTask = (req, res) => {
+const deleteTask = async (req, res) => {
   const _id = req.params.id;
-  const data = taskService.deleteTask(_id);
+  const data = await taskService.deleteTask(_id);
   res.send(data);
 };
 
