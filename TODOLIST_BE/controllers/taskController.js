@@ -2,6 +2,7 @@ import taskService from "../services/taskService.js";
 
 const getTask = async (req, res) => {
   const data = await taskService.getTask();
+  //console.log("el usuario que envio la peticion es ", req.data);
   res.send(data);
 };
 

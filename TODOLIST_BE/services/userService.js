@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
-
+import jwt from "jsonwebtoken";
 const prisma = new PrismaClient();
 
 const getUser = async () => {
@@ -40,16 +40,47 @@ const deleteUser = (_id) => {
   });
   return data;
 };
-const login = (body) => {
-  const user = users.find(
-    (user) => user.email === body.email && user.password === body.password
-  );
+
+const login = async (body) => {
+  const { email, password } = body;
+  let respuesta = "";
+  const user = await prisma.user.findUnique({
+    where: {
+      email: email,
+    },
+  });
+
+  if (user) {
+    const match = await comparePassword(password, user.password);
+    if (match) {
+      const dataUser = { ...user, password: "" };
+      /* const dataUser = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        password: "",
+      }; */
+      const token = jwt.sign(dataUser, process.env.SECRET_KEY, {
+        expiresIn: "1h",
+      });
+      respuesta = token;
+    } else {
+      respuesta = false;
+    }
+  }
+
+  return respuesta;
 };
 
 async function hashPassword(password) {
   const saltRounds = 10;
   const hashedPassword = await bcrypt.hash(password, saltRounds);
   return hashedPassword;
+}
+
+async function comparePassword(password, hashedPassword) {
+  const match = await bcrypt.compare(password, hashedPassword);
+  return match;
 }
 
 export default {

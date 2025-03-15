@@ -24,9 +24,21 @@ const deleteUser = async (req, res) => {
   res.send(data);
 };
 
+const login = async (req, res) => {
+  const body = req.body;
+  const data = await userService.login(body);
+  if (data) {
+    res.send({ token: data });
+  } else {
+    const respuesta = { mensaje: "❌ usuario o contraseña incorrectos" };
+    res.status(401).send(respuesta);
+  }
+};
+
 export default {
   getUser,
   createUser,
   updateUser,
   deleteUser,
+  login,
 };
